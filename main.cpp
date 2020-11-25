@@ -15,34 +15,111 @@ void swap(T *x, T *y)
 template<typename T>
 bool comp(const T &a, const T &b);
 
+template<typename T>
+T* middleOfThree(T *a, T *b, T *c) 
+{ 
+    if (*a > *b)  
+    { 
+        if (*b > *c) 
+            return b; 
+        else if (*a > *c) 
+            return c; 
+        else
+            return a; 
+    } 
+    else 
+    { 
+        if (*a > *c) 
+            return a; 
+        else if (*b > *c) 
+            return c; 
+        else
+            return b; 
+    } 
+} 
+
 template<typename T, typename Compare>
 void quicksort(T *first, T *last, Compare comp)
 {
     int size = last - first;
 
-    cout << "Size = " << size << endl;
+    //Find Median
+    int firstElementValue = *(first);
+    int lastElementValue = *(last - 1);
+    int middleElementPointer = size / 2 -1;
+    int middleElementValue = *(first + middleElementPointer);
 
-    // swap((first + 1), (first + 4));
+    int* medianPointer = middleOfThree(first, first + middleElementPointer, last - 1);
+    int medianValue = *(medianPointer);
 
-#pragma region 
-    // Bubble sort for test
-    for (int i = 0; i < size; i++)
+    // cout << "Test " << first << endl;
+    cout << "First element = " << firstElementValue << endl;
+    cout << "Last element = " << lastElementValue << endl;
+    cout << "Middle element = " << middleElementValue << endl;
+    cout << "Median value = " << medianValue << endl;
+    
+
+    // Обозначить i и j
+    int* i = first;
+    int* j = last - 1;
+
+    cout << "i = " << *i << endl;
+    cout << "j = " << *j << endl;
+
+    // первая итерация сортировки
+
+    while (i <= j) 
     {
-        for (int j = 0; j < size - i - 1; j++)
+        if(*i >= *medianPointer)
         {
-            if (comp(*(first + j), *(first + j + 1)))
+            if (*j <= *medianPointer)
             {
-                swap((first + j), (first + j + 1));
+                swap(i,j);
+                i++;
+                j--;
             }
-            
+            else
+            {
+                j--;
+            }   
+        }
+        else
+        {
+            i++;
         }
     }
+    
+    cout << "After partition " << endl;
+    cout << "i = " << *i << endl;
+    cout << "j = " << *j << endl;
+
+    
 
     for (int i = 0; i < size; i++)
     {
-        cout << *(first + i) << endl;
+        cout << *(first + i) << " ";
     }
-#pragma endregion
+
+
+// #pragma region 
+    // Bubble sort for test
+    // for (int i = 0; i < size; i++)
+    // {
+        // for (int j = 0; j < size - i - 1; j++)
+        // {
+            // if (comp(*(first + j), *(first + j + 1)))
+            // {
+                // swap((first + j), (first + j + 1));
+            // }
+            // 
+        // }
+    // }
+// 
+    // for (int i = 0; i < size; i++)
+    // {
+        // cout << *(first + i) << endl;
+    // }
+// #pragma endregion
     
     // cout << *first << endl;
     // cout << *(++first) << endl;
@@ -52,8 +129,8 @@ void quicksort(T *first, T *last, Compare comp)
 
 int main()
 {
-    int a[10] = {1, 1, 1, 2, 2, 3, 3, 4, 4, 4};
-    quicksort(a, a + 10, [](int a, int b) { return a < b; });
+    int a[8] = {2, 8, 4, 3, 1, 6, 9, 7};
+    quicksort(a, a + 8, [](int a, int b) { return a < b; });
 
     // int a[] = { 1, 2, 4, 6, 7, 8 };
     // int found = binary_search(a, 6, 0, 5);
