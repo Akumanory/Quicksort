@@ -39,76 +39,83 @@ T* middleOfThree(T *a, T *b, T *c)
 } 
 
 template<typename T, typename Compare>
-void quicksort(T *first, T *last, Compare comp)
+T* partition(T *i, T *j, T* medianPointer, Compare comp)
 {
-    int size = last - first;
-    if (size > 1)
+    T* last = j;
+    T* first = i;
+    T medianValue = *medianPointer;
+    T* pivot;
+
+    while (i <= j) 
     {
+        if (i == last || j == first)
+        {
+            break;
+        }
+        
+        if(comp(medianValue, *i) || medianPointer == i)
+        {
+            if (comp(*j, medianValue) || medianPointer == j) 
+            {
+                swap(i,j);
+                i++;
+                j--;
+            }
+            else
+            {
+                if (j > first)
+                {
+                    j--;
+                }
+            }   
+        }
+        else
+        {
+            if (i < last)
+            {
+                i++;
+            }
+        }
+    }
+
+    return j;
+}
+
+template<typename T, typename Compare>
+void quicksort_without_insertion_sort(T *first, T *last, Compare comp)
+{
+    T size = last - first;
+    if (size > 1)
+    {   
+        // T firstElementValue = *(first);
+        // T lastElementValue = *(last - 1);
+        T middleElementPointer = (size - 1) / 2;
+        // T middleElementValue = *(first + middleElementPointer);
+        T* medianPointer = middleOfThree(first, first + middleElementPointer, last - 1);
+        T medianValue = *(medianPointer);
+
+        // cout << "First element = " << firstElementValue << endl;
+        // cout << "Last element = " << lastElementValue << endl;
+        // cout << "Middle element = " << middleElementValue << endl;
+        // cout << "Median value = " << medianValue << endl;
+        
+
         for (size_t i = 0; i < size; i++)
         {
             cout << *(first + i) << " ";    
         }
         cout << endl;
 
-        //Find Median
-        int firstElementValue = *(first);
-        int lastElementValue = *(last - 1);
-        int middleElementPointer = (size - 1) / 2;
-        int middleElementValue = *(first + middleElementPointer);
-
-        int* medianPointer = middleOfThree(first, first + middleElementPointer, last - 1);
-        int medianValue = *(medianPointer);
-
-        // cout << "Test " << first << endl;
-        cout << "First element = " << firstElementValue << endl;
-        cout << "Last element = " << lastElementValue << endl;
-        cout << "Middle element = " << middleElementValue << endl;
-        cout << "Median value = " << medianValue << endl;
-
-
         // Обозначить i и j
-        int* i = first;
-        int* j = last - 1;
+        T* i = first;
+        T* j = last - 1;
 
         cout << "i = " << *i << endl;
         cout << "j = " << *j << endl;
 
         // первая итерация сортировки
 
-        while (i <= j) 
-        {
-            if (medianPointer == i && medianPointer == j)
-            {
-                if (medianPointer == first)
-                {
-                    i++;
-                }
-                else
-                {
-                    j--;
-                }
-            }
-            else
-            {
-                if(comp(*medianPointer, *i) || medianPointer == i)
-                {
-                    if (comp(*j, *medianPointer) || medianPointer == j) 
-                    {
-                        swap(i,j);
-                        i++;
-                        j--;
-                    }
-                    else
-                    {
-                        j--;
-                    }   
-                }
-                else
-                {
-                    i++;
-                }
-            }
-        }
+        T* pivot = partition(i, j, medianPointer, comp);
     
         cout << "After partition " << endl;
         cout << "i(index) = " << i - first << endl;
@@ -120,55 +127,25 @@ void quicksort(T *first, T *last, Compare comp)
         }
         cout << endl;
 
-
-        quicksort(first, j + 1, comp);
-        quicksort(j + 1, last, comp);
-
-        // for (int i = 0; i < size; i++)
-        // {
-        //     cout << *(first + i) << " ";
-        // }
+        quicksort_without_insertion_sort(first, pivot + 1, comp);
+        quicksort_without_insertion_sort(pivot + 1, last, comp);
     }
-    
-    
-
-    
-
-// #pragma region 
-    // Bubble sort for test
-    // for (int i = 0; i < size; i++)
-    // {
-        // for (int j = 0; j < size - i - 1; j++)
-        // {
-            // if (comp(*(first + j), *(first + j + 1)))
-            // {
-                // swap((first + j), (first + j + 1));
-            // }
-            // 
-        // }
-    // }
-// 
-    // for (int i = 0; i < size; i++)
-    // {
-        // cout << *(first + i) << endl;
-    // }
-// #pragma endregion
-    
-    // cout << *first << endl;
-    // cout << *(++first) << endl;
-    // cout << *last << endl;
 }
 
 
 int main()
 {
+    // int a[2] = {8,7};
+    // quicksort(a, a + 2, [](int a, int b) { return a > b;});
+
     int a[8] = {2, 8, 4, 3, 1, 6, 9, 7};
-    quicksort(a, a + 8, [](int a, int b) { return a > b;});
+    quicksort_without_insertion_sort(a, a + 8, [](int a, int b) { return a > b;});
+
+    // int a[8] = {3, 7, 8, 2, 5, 6, 1, 9};
+    // quicksort(a, a + 8, [](int a, int b) { return a > b;});
 
     // int a[5] = {4,8,6,9,7};
-    // quicksort(a, a + 5, [](int a, int b) { return a < b; });
-
-    
+    // quicksort(a, a + 5, [](int a, int b) { return a < b; });  
 
     for (auto &&i : a)
     {
