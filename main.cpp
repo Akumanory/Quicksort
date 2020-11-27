@@ -42,64 +42,97 @@ template<typename T, typename Compare>
 void quicksort(T *first, T *last, Compare comp)
 {
     int size = last - first;
-
-    //Find Median
-    int firstElementValue = *(first);
-    int lastElementValue = *(last - 1);
-    int middleElementPointer = size / 2 -1;
-    int middleElementValue = *(first + middleElementPointer);
-
-    int* medianPointer = middleOfThree(first, first + middleElementPointer, last - 1);
-    int medianValue = *(medianPointer);
-
-    // cout << "Test " << first << endl;
-    cout << "First element = " << firstElementValue << endl;
-    cout << "Last element = " << lastElementValue << endl;
-    cout << "Middle element = " << middleElementValue << endl;
-    cout << "Median value = " << medianValue << endl;
-    
-
-    // Обозначить i и j
-    int* i = first;
-    int* j = last - 1;
-
-    cout << "i = " << *i << endl;
-    cout << "j = " << *j << endl;
-
-    // первая итерация сортировки
-
-    while (i <= j) 
+    if (size > 1)
     {
-        if(*i >= *medianPointer)
+        for (size_t i = 0; i < size; i++)
         {
-            if (*j <= *medianPointer)
+            cout << *(first + i) << " ";    
+        }
+        cout << endl;
+
+        //Find Median
+        int firstElementValue = *(first);
+        int lastElementValue = *(last - 1);
+        int middleElementPointer = (size - 1) / 2;
+        int middleElementValue = *(first + middleElementPointer);
+
+        int* medianPointer = middleOfThree(first, first + middleElementPointer, last - 1);
+        int medianValue = *(medianPointer);
+
+        // cout << "Test " << first << endl;
+        cout << "First element = " << firstElementValue << endl;
+        cout << "Last element = " << lastElementValue << endl;
+        cout << "Middle element = " << middleElementValue << endl;
+        cout << "Median value = " << medianValue << endl;
+
+
+        // Обозначить i и j
+        int* i = first;
+        int* j = last - 1;
+
+        cout << "i = " << *i << endl;
+        cout << "j = " << *j << endl;
+
+        // первая итерация сортировки
+
+        while (i <= j) 
+        {
+            if (medianPointer == i && medianPointer == j)
             {
-                swap(i,j);
-                i++;
-                j--;
+                if (medianPointer == first)
+                {
+                    i++;
+                }
+                else
+                {
+                    j--;
+                }
             }
             else
             {
-                j--;
-            }   
+                if(comp(*medianPointer, *i) || medianPointer == i)
+                {
+                    if (comp(*j, *medianPointer) || medianPointer == j) 
+                    {
+                        swap(i,j);
+                        i++;
+                        j--;
+                    }
+                    else
+                    {
+                        j--;
+                    }   
+                }
+                else
+                {
+                    i++;
+                }
+            }
         }
-        else
+    
+        cout << "After partition " << endl;
+        cout << "i(index) = " << i - first << endl;
+        cout << "j(index) = " << j - first<< endl;
+
+        for (size_t i = 0; i < size; i++)
         {
-            i++;
+            cout << *(first + i) << " ";    
         }
+        cout << endl;
+
+
+        quicksort(first, j + 1, comp);
+        quicksort(j + 1, last, comp);
+
+        // for (int i = 0; i < size; i++)
+        // {
+        //     cout << *(first + i) << " ";
+        // }
     }
     
-    cout << "After partition " << endl;
-    cout << "i = " << *i << endl;
-    cout << "j = " << *j << endl;
-
     
 
-    for (int i = 0; i < size; i++)
-    {
-        cout << *(first + i) << " ";
-    }
-
+    
 
 // #pragma region 
     // Bubble sort for test
@@ -130,7 +163,18 @@ void quicksort(T *first, T *last, Compare comp)
 int main()
 {
     int a[8] = {2, 8, 4, 3, 1, 6, 9, 7};
-    quicksort(a, a + 8, [](int a, int b) { return a < b; });
+    quicksort(a, a + 8, [](int a, int b) { return a > b;});
+
+    // int a[5] = {4,8,6,9,7};
+    // quicksort(a, a + 5, [](int a, int b) { return a < b; });
+
+    
+
+    for (auto &&i : a)
+    {
+        cout << i << " ";
+    }
+    
 
     // int a[] = { 1, 2, 4, 6, 7, 8 };
     // int found = binary_search(a, 6, 0, 5);
