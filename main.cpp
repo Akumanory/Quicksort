@@ -151,23 +151,4 @@ int main()
     {
         cout << i << " ";
     }
-    
-
-    // int a[] = { 1, 2, 4, 6, 7, 8 };
-    // int found = binary_search(a, 6, 0, 5);
-
-    // std::cout << (found ? "yes" : "no") << std::endl;
-
-    
-    // int temp = 1;
-    // double *first = &a[0];
-    // double *second = &a[1];
-    // double *third = &a[2];
-
-    // cout << sizeof(*first) << endl;
-    // cout << sizeof(temp) << endl;
-    
-    // cout << first << endl;
-    // cout << second << endl;
-    // cout << third - first << endl;
 }
