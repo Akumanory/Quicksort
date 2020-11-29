@@ -82,12 +82,32 @@ T* partition(T *i, T *j, T* medianPointer, Compare comp)
 }
 
 template<typename T, typename Compare>
+void insertion_sort(T *first, T *last, Compare comp)
+{
+    int size = last - first;
+
+    for (int i = 1; i < size; i++)
+    {
+        T key = *(first + i);
+        T* j = (first + (i - 1));
+
+        while(comp(key, *j) && j - first >= 0)
+        {
+            *(j + 1) = *j;
+            --j;
+        }
+        *(j + 1) = key;
+
+    }
+}
+
+template<typename T, typename Compare>
 void quicksort_without_insertion_sort(T *first, T *last, Compare comp)
 {
     while (first < last - 1)
     {
-        T size = last - first;
-        T middleElementPointer = (size - 1) / 2;
+        int size = last - first;
+        int middleElementPointer = (size - 1) / 2;
         T* medianPointer = middleOfThree(first, first + middleElementPointer, last - 1);
         T medianValue = *(medianPointer);
 
@@ -175,11 +195,13 @@ int main()
     // int a[2] = {8,7};
     // quicksort(a, a + 2, [](int a, int b) { return a > b;});
 
-    // int a[8] = {2, 8, 4, 3, 1, 6, 9, 7};
+    int a[8] = {2, 8, 4, 3, 1, 6, 9, 7};
     // quicksort_without_insertion_sort(a, a + 8, [](int a, int b) { return a < b;});
+    insertion_sort(a, a + 8, [](int a, int b) { return a < b;});
 
-    int a[8] = {3, 7, 8, 2, 5, 6, 1, 9};
-    quicksort_without_insertion_sort(a, a + 8, [](int a, int b) { return a < b;});
+    // int a[8] = {3, 7, 8, 2, 5, 6, 1, 9};
+    // quicksort_without_insertion_sort(a, a + 8, [](int a, int b) { return a < b;});
+    // insertion_sort(a, a + 8, [](int a, int b) { return a > b;});
 
     // int a[5] = {4,8,6,9,7};
     // quicksort(a, a + 5, [](int a, int b) { return a < b; });  
