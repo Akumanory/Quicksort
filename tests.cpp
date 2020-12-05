@@ -93,12 +93,12 @@ TEST(TestQuicksort, ElementComparsionByAscending)
 
 TEST(TestQuicksortWithoutInsertionsortUpgrade, ElementComparsionByAscending)
 {
-    int size = 121;
+    int size = 8;
     
-    int first_array[size];
-    int second_array[size];
-    fill_array_with_random_values(first_array, first_array + size);
-    copyArray(first_array, second_array, size);
+    int first_array[size] = {2, 8, 4, 3, 1, 6, 9, 7};;
+    int second_array[size]= {2, 8, 4, 3, 1, 6, 9, 7};;
+    // fill_array_with_random_values(first_array, first_array + size);
+    // copyArray(first_array, second_array, size);
     
     std::sort(first_array, first_array + size, [](int a, int b) { return a < b;});
     quicksort_without_insertion_sort(second_array, second_array + size, [](int a, int b) { return a < b;});
@@ -118,12 +118,12 @@ TEST(TestQuicksortWithoutInsertionsortUpgrade, ElementComparsionByAscending)
 
 TEST(TestQuicksortWithoutInsertionsortUpgrade, ElementComparsionByDescending)
 {
-    int size = 2355;
+    int size = 8;
     
-    int first_array[size];
-    int second_array[size];
-    fill_array_with_random_values(first_array, first_array + size);
-    copyArray(first_array, second_array, size);
+    int first_array[size] = {2, 8, 4, 3, 1, 6, 9, 7};
+    int second_array[size] = {2, 8, 4, 3, 1, 6, 9, 7};
+    // fill_array_with_random_values(first_array, first_array + size);
+    // copyArray(first_array, second_array, size);
     
     std::sort(first_array, first_array + size, [](int a, int b) { return a > b;});
     quicksort_without_insertion_sort(second_array, second_array + size, [](int a, int b) { return a > b;});

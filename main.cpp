@@ -45,8 +45,6 @@ T* middleOfThree(T *a, T *b, T *c)
 template<typename T, typename Compare>
 T* partition(T *i, T *j, T* medianPointer, Compare comp)
 {
-    // T* last = j;
-    // T* first = i;
     T medianValue = *medianPointer;
     T* pivot;
 
@@ -68,45 +66,6 @@ T* partition(T *i, T *j, T* medianPointer, Compare comp)
 
         swap(i,j);
     }
-
-    // while (i <= j) 
-    // {
-    //     if (i == last || j == first)
-    //     {
-    //         if (j == last)
-    //         {
-    //             j--;
-    //         }
-            
-    //         break;
-    //     }
-        
-    //     if(comp(medianValue, *i) || medianPointer == i)
-    //     {
-    //         if (comp(*j, medianValue) || medianPointer == j) 
-    //         {
-    //             swap(i,j);
-    //             i++;
-    //             j--;
-    //         }
-    //         else
-    //         {
-    //             if (j > first)
-    //             {
-    //                 j--;
-    //             }
-    //         }   
-    //     }
-    //     else
-    //     {
-    //         if (i < last)
-    //         {
-    //             i++;
-    //         }
-    //     }
-    // }
-
-    // return j;
 }
 
 template<typename T, typename Compare>
@@ -142,14 +101,14 @@ void quicksort_without_insertion_sort(T *first, T *last, Compare comp)
         T* i = first;
         T* j = last - 1;
 
-        // cout << "i = " << *i << endl;
-        // cout << "j = " << *j << endl;
+        cout << "i = " << *i << endl;
+        cout << "j = " << *j << endl;
 
         T* pivot = partition(i, j, medianPointer, comp);
 
-        // cout << "After partition " << endl;
-        // cout << "i(index) = " << i - first << endl;
-        // cout << "j(index) = " << j - first<< endl;
+        cout << "After partition " << endl;
+        cout << "i(index) = " << i - first << endl;
+        cout << "j(index) = " << j - first<< endl;
 
         for (size_t i = 0; i < size; i++)
         {
@@ -448,3 +407,42 @@ std::vector<TimeStruct> test_time_with_random_array(int initial_size, int size_s
     // int a[5] = {4,8,6,9,7};
     // quicksort(a, a + 5, [](int a, int b) { return a < b; });  
 // }
+
+    // while (i <= j) 
+    // {
+    //     if (i == last || j == first)
+    //     {
+    //         if (j == last)
+    //         {
+    //             j--;
+    //         }
+            
+    //         break;
+    //     }
+        
+    //     if(comp(medianValue, *i) || medianPointer == i)
+    //     {
+    //         if (comp(*j, medianValue) || medianPointer == j) 
+    //         {
+    //             swap(i,j);
+    //             i++;
+    //             j--;
+    //         }
+    //         else
+    //         {
+    //             if (j > first)
+    //             {
+    //                 j--;
+    //             }
+    //         }   
+    //     }
+    //     else
+    //     {
+    //         if (i < last)
+    //         {
+    //             i++;
+    //         }
+    //     }
+    // }
+
+    // return j;
