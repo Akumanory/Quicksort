@@ -45,53 +45,68 @@ T* middleOfThree(T *a, T *b, T *c)
 template<typename T, typename Compare>
 T* partition(T *i, T *j, T* medianPointer, Compare comp)
 {
-    T* last = j;
-    T* first = i;
+    // T* last = j;
+    // T* first = i;
     T medianValue = *medianPointer;
     T* pivot;
 
-    while (i <= j) 
+    i--;
+    j++;
+
+    while (1)
     {
-        if (i == last || j == first)
-        {
-            if (j == last)
-            {
-                j--;
-            }
-            
-            break;
-        }
-        
-        if(comp(medianValue, *i) || medianPointer == i)
-        {
-            if (comp(*j, medianValue) || medianPointer == j) 
-            {
-                swap(i,j);
-                i++;
-                j--;
-            }
-            else
-            {
-                if (j > first)
-                {
-                    j--;
-                }
-            }   
-        }
-        else
-        {
-            cout << "there" << endl;
-            if (i < last)
-            {
-                cout << "there 2" << endl;
-                cout << "I: = " << *i << endl;
-                cout << "I_index: = " << i - first << endl;
-                i++;
-            }
-        }
+        do
+            i++;
+        while (comp(*i, medianValue)) ;
+
+        do
+            j--;
+        while (comp(medianValue, *j));
+
+        if (i >= j) 
+            return j;
+
+        swap(i,j);
     }
 
-    return j;
+    // while (i <= j) 
+    // {
+    //     if (i == last || j == first)
+    //     {
+    //         if (j == last)
+    //         {
+    //             j--;
+    //         }
+            
+    //         break;
+    //     }
+        
+    //     if(comp(medianValue, *i) || medianPointer == i)
+    //     {
+    //         if (comp(*j, medianValue) || medianPointer == j) 
+    //         {
+    //             swap(i,j);
+    //             i++;
+    //             j--;
+    //         }
+    //         else
+    //         {
+    //             if (j > first)
+    //             {
+    //                 j--;
+    //             }
+    //         }   
+    //     }
+    //     else
+    //     {
+    //         if (i < last)
+    //         {
+    //             i++;
+    //         }
+    //     }
+    // }
+
+    // return j;
 }
 
 template<typename T, typename Compare>
@@ -221,22 +236,22 @@ void quicksort_with_insertion_sort(T *first, T *last, Compare comp)
             T* i = first;
             T* j = last - 1;
 
-            cout << "i = " << *i << endl;
-            cout << "j = " << *j << endl;
-            cout << "median = " << *medianPointer << endl;
-            cout << "median_index = " << medianPointer - first << endl;
+            // cout << "i = " << *i << endl;
+            // cout << "j = " << *j << endl;
+            // cout << "median = " << *medianPointer << endl;
+            // cout << "median_index = " << medianPointer - first << endl;
 
             T* pivot = partition(i, j, medianPointer, comp);
     
-            cout << "After partition " << endl;
-            cout << "i(index) = " << i - first << endl;
-            cout << "j(index) = " << j - first<< endl;
+            // cout << "After partition " << endl;
+            // cout << "i(index) = " << i - first << endl;
+            // cout << "j(index) = " << j - first<< endl;
     
-            for (size_t i = 0; i < size; i++)
-            {
-                cout << *(first + i) << " ";    
-            }
-            cout << endl;
+            // for (size_t i = 0; i < size; i++)
+            // {
+            //     cout << *(first + i) << " ";    
+            // }
+            // cout << endl;
     
             if (pivot - first < last - 1 - pivot)
             {
@@ -251,7 +266,6 @@ void quicksort_with_insertion_sort(T *first, T *last, Compare comp)
         }
     }
 }
-
 
 double time_check()
 {
@@ -317,7 +331,6 @@ TimeStruct test_time(T *first, T *last, Compare comp)
 
     return time;
 }
-
 
 void fill_array_with_random_values(int *first, int *last)
 {
