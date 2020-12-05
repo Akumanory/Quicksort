@@ -33,3 +33,7 @@
 
 #vscode
 .vscode
+
+#Folders to ignore
+/builds
+
