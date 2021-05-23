@@ -1,0 +1,60 @@
+Size of array: 50
+Quicksort time: 0.0321945
+Insertionsort time: 0.0325746
+Size of array: 100
+Quicksort time: 0.10287
+Insertionsort time: 0.124732
+Size of array: 150
+Quicksort time: 0.219919
+Insertionsort time: 0.29765
+Size of array: 200
+Quicksort time: 0.383042
+Insertionsort time: 0.618386
+Size of array: 250
+Quicksort time: 0.609106
+Insertionsort time: 1.10534
+Size of array: 300
+Quicksort time: 0.887889
+Insertionsort time: 1.78876
+Size of array: 350
+Quicksort time: 1.23947
+Insertionsort time: 2.91203
+Size of array: 400
+Quicksort time: 1.6242
+Insertionsort time: 4.0969
+Size of array: 450
+Quicksort time: 2.06983
+Insertionsort time: 5.53587
+Size of array: 500
+Quicksort time: 2.56492
+Insertionsort time: 7.38603
+Size of array: 550
+Quicksort time: 3.13885
+Insertionsort time: 9.5791
+Size of array: 600
+Quicksort time: 3.75607
+Insertionsort time: 12.5049
+Size of array: 650
+Quicksort time: 4.44109
+Insertionsort time: 15.8229
+Size of array: 700
+Quicksort time: 5.23734
+Insertionsort time: 19.8196
+Size of array: 750
+Quicksort time: 6.06378
+Insertionsort time: 24.1089
+Size of array: 800
+Quicksort time: 6.92316
+Insertionsort time: 28.7873
+Size of array: 850
+Quicksort time: 7.90055
+Insertionsort time: 34.4969
+Size of array: 900
+Quicksort time: 8.89909
+Insertionsort time: 40.726
+Size of array: 950
+Quicksort time: 9.98091
+Insertionsort time: 47.941
+Size of array: 1000
+Quicksort time: 11.1098
+Insertionsort time: 55.5127

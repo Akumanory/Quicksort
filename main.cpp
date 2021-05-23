@@ -4,7 +4,6 @@
 
 #include "time.h"
 
-
 using std::cout;
 using std::endl;
 

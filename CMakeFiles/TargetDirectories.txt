@@ -1,0 +1,3 @@
+/home/akumanory/C++ Training/alogorithms_homework/quicksort/CMakeFiles/rebuild_cache.dir
+/home/akumanory/C++ Training/alogorithms_homework/quicksort/CMakeFiles/edit_cache.dir
+/home/akumanory/C++ Training/alogorithms_homework/quicksort/CMakeFiles/runTests.dir

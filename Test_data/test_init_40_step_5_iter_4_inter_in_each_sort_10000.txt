@@ -1,0 +1,12 @@
+Size of array: 40
+Quicksort time: 0.0240625
+Insertionsort time: 0.0249819
+Size of array: 45
+Quicksort time: 0.0495189
+Insertionsort time: 0.0459171
+Size of array: 50
+Quicksort time: 0.0786514
+Insertionsort time: 0.0716463
+Size of array: 55
+Quicksort time: 0.109762
+Insertionsort time: 0.101348

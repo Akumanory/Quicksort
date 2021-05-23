@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/akumanory/C++ Training/alogorithms_homework/quicksort/main.cpp
+iostream
+-
+cassert
+-
+vector
+-
+time.h
+/home/akumanory/C++ Training/alogorithms_homework/quicksort/time.h
+
+/home/akumanory/C++ Training/alogorithms_homework/quicksort/tests.cpp
+main.cpp
+/home/akumanory/C++ Training/alogorithms_homework/quicksort/main.cpp
+gtest/gtest.h
+-
+

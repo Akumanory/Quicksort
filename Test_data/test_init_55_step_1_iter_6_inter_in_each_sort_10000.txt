@@ -1,0 +1,18 @@
+Size of array: 55
+Quicksort time: 0.0333987
+Insertionsort time: 0.0369802
+Size of array: 56
+Quicksort time: 0.0669611
+Insertionsort time: 0.0693472
+Size of array: 57
+Quicksort time: 0.100217
+Insertionsort time: 0.104359
+Size of array: 58
+Quicksort time: 0.134737
+Insertionsort time: 0.137347
+Size of array: 59
+Quicksort time: 0.17236
+Insertionsort time: 0.171426
+Size of array: 60
+Quicksort time: 0.206811
+Insertionsort time: 0.214076
